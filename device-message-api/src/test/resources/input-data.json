@@ -1,0 +1,11 @@
+{
+  "data": {
+    "duration": 300,
+    "limit": 60.6,
+    "active": true
+  },
+  "domain": "speedLimitAlert",
+  "version": 2.0,
+  "command": "put",
+  "timestamp": 1515493041259
+}

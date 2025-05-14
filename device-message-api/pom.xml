@@ -127,7 +127,11 @@
             <artifactId>jaxb-api</artifactId>
             <version>${jaxb-api.version}</version>
         </dependency>
-        <!-- Ignite Common Library Dependencies -->
+        <dependency>
+			<groupId>org.eclipse.ecsp</groupId>
+			<artifactId>transformers</artifactId>
+			<version>${transformers.version}</version>
+		</dependency>
         <dependency>
             <groupId>org.eclipse.ecsp</groupId>
             <artifactId>api-common</artifactId>
@@ -675,7 +679,6 @@
             <artifactId>tomcat-annotations-api</artifactId>
             <version>${tomcat.version}</version>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-dependencies -->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-dependencies</artifactId>

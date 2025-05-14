@@ -160,6 +160,7 @@
         <war.plugin.version>3.3.1</war.plugin.version>
         <jakarta.servlet-api.version>6.1.0</jakarta.servlet-api.version>
         <junit.jupiter.version>5.6.2</junit.jupiter.version>
+        <transformers.version>1.0.0</transformers.version>
     </properties>
 
     <distributionManagement>

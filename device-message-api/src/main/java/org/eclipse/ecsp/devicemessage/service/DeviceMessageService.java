@@ -92,10 +92,7 @@ public class DeviceMessageService implements MqttBaseService, InitializingBean, 
     private String mqttPrefix;
     @Value("${mqtt.clientid}")
     private String clientId;
-    @Value("${vault.environment}")
-    private String vaultEnv;
-    @Value("${secret.vault.enabled}")
-    private boolean secretsVaultEnabled;
+    
     @Autowired
     private MetricRegistry metricRegistry;
 

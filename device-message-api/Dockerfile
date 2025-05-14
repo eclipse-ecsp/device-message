@@ -1,4 +1,4 @@
-FROM tomcat:10.1.40-jdk17
+FROM eclipseecsp/ecsp-base-java17-tomcat10-apr:1.0.0
 
 ARG PROJECT_JAR_VERSION
 RUN echo ${PROJECT_JAR_VERSION}

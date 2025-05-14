@@ -46,7 +46,6 @@
     </parent>
     <artifactId>device-message-commons</artifactId>
     <dependencies>
-        <!-- Child Module dependencies -->
         <dependency>
             <groupId>org.eclipse.ecsp</groupId>
             <artifactId>device-message-entities</artifactId>
@@ -72,7 +71,6 @@
                 </exclusion>
             </exclusions>
         </dependency>
-        <!-- Third party jar dependencies -->
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
@@ -87,29 +85,4 @@
             <version>${jackson.version}</version>
         </dependency>
     </dependencies>
-    <build>
-        <plugins>
-            <!--  JaCoCo Maven plugin to generate a code coverage report for a Java project -->
-            <plugin>
-                <groupId>org.jacoco</groupId>
-                <artifactId>jacoco-maven-plugin</artifactId>
-                <version>${jacoco.plugin.version}</version>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>prepare-agent</goal>
-                        </goals>
-                    </execution>
-                    <!-- attached to Maven test phase -->
-                    <execution>
-                        <id>report</id>
-                        <phase>test</phase>
-                        <goals>
-                            <goal>report</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-        </plugins>
-    </build>
 </project>

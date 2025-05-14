@@ -26,9 +26,6 @@ import org.eclipse.ecsp.nosqldao.IgniteBaseDAO;
 /**
  * This interface represents a repository for managing device shadows.
  * It extends the IgniteBaseDAO interface and provides CRUD operations for DeviceShadow objects.
- *
- * @param <String>       the type of the key used for device shadows
- * @param <DeviceShadow> the type of the device shadow objects
  */
 public interface DeviceShadowRepository extends IgniteBaseDAO<String, DeviceShadow> {
 }

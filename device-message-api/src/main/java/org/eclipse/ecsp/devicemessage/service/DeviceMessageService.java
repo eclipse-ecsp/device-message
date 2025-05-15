@@ -62,10 +62,6 @@ public class DeviceMessageService implements MqttBaseService, InitializingBean, 
 
     private static final String TO_DEVICE = "2d";
 
-    private static final String MQTT_USER_PW = "mqtt_user_password";
-
-    private static final String TEST = "test";
-
     private static final IgniteLogger LOGGER = IgniteLoggerFactory.getLogger(DeviceMessageService.class);
     private static final int MAX_CLIENTS = 24;
     @Value("${mqtt.broker.url}")

@@ -799,7 +799,6 @@
                 <version>${war.plugin.version}</version>
                 <configuration>
                     <failOnMissingWebXml>false</failOnMissingWebXml>
-                    <packagingExcludes>**/*.properties,**/log4j.properties,**/context.xml</packagingExcludes>
                 </configuration>
             </plugin>
             <plugin>

@@ -22,10 +22,11 @@ package org.eclipse.ecsp.devicemessage.mqtt;
 
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.autoconfigure.ImportAutoConfiguration;
+import org.springframework.boot.autoconfigure.web.client.RestTemplateAutoConfiguration;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.validation.beanvalidation.MethodValidationPostProcessor;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
@@ -37,6 +38,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
  * Configuration class for web-related configurations.
  */
 @Configuration("myConfig")
+@ImportAutoConfiguration(RestTemplateAutoConfiguration.class)
 public class WebConfig implements WebMvcConfigurer {
 
     @Value("${authentication.check}")
@@ -86,17 +88,6 @@ public class WebConfig implements WebMvcConfigurer {
         return builder.build();
     }
 
-
-    /**
-     * Creates a new instance of MethodValidationPostProcessor.
-     *
-     *
-     * @return the MethodValidationPostProcessor instance
-     */
-    @Bean
-    public MethodValidationPostProcessor methodValidationPostProcessor() {
-        return new MethodValidationPostProcessor();
-    }
 
     /**
      * Returns a WebMvcConfigurer bean that configures Cross-Origin Resource Sharing (CORS) for the application.

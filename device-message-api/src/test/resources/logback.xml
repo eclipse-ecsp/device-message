@@ -38,15 +38,6 @@
 
 <configuration>
 
-    <!--  turboFilter class="com.harman.haa.api.utils.DuplicateExceptionsFilter"/-->
-
-    <!-- <appender name="FILE" class="ch.qos.logback.core.FileAppender"> -->
-    <!-- <file>../logs/aaas.log</file> -->
-    <!-- <encoder> -->
-    <!-- <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{35} - %msg%n</pattern> -->
-    <!-- </encoder> -->
-    <!-- </appender> -->
-
     <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <file>logs/api.log</file>
         <append>true</append>

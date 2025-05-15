@@ -136,7 +136,7 @@
         <entities.version>1.1.1</entities.version>
         <utils.version>1.1.1</utils.version>
         <spring.boot.version>3.4.4</spring.boot.version>
-        <api.common.version>0.0.1</api.common.version>
+        <api.common.version>1.0.1</api.common.version>
         <tomcat.version>10.1.40</tomcat.version>
         <netty.version>4.1.119.Final</netty.version>
         <logback.version>1.5.13</logback.version>

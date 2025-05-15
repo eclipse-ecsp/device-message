@@ -20,7 +20,6 @@
 
 package org.eclipse.ecsp.devicemessage.mqtt;
 
-import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.ImportAutoConfiguration;
 import org.springframework.boot.autoconfigure.web.client.RestTemplateAutoConfiguration;
@@ -29,7 +28,6 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.servlet.HandlerInterceptor;
-import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
@@ -43,9 +41,6 @@ public class WebConfig implements WebMvcConfigurer {
 
     @Value("${authentication.check}")
     private boolean authCheck;
-
-    @Value("${cors.origin.allow}")
-    private String corsOriginAllow;
 
 
     /**
@@ -86,28 +81,6 @@ public class WebConfig implements WebMvcConfigurer {
     @Bean
     public RestTemplate restTemplate(RestTemplateBuilder builder) {
         return builder.build();
-    }
-
-
-    /**
-     * Returns a WebMvcConfigurer bean that configures Cross-Origin Resource Sharing (CORS) for the application.
-     * If the 'corsOriginAllow' property is not blank, it adds a mapping for the specified origin.
-     * Otherwise, it adds a mapping for all origins.
-     *
-     * @return the WebMvcConfigurer bean for configuring CORS
-     */
-    @Bean
-    public WebMvcConfigurer corsConfigurer() {
-        return new WebMvcConfigurer() {
-            @Override
-            public void addCorsMappings(CorsRegistry registry) {
-                if (!StringUtils.isBlank(corsOriginAllow)) {
-                    registry.addMapping(corsOriginAllow.trim());
-                } else {
-                    registry.addMapping("*");
-                }
-            }
-        };
     }
 
     /**

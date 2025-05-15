@@ -97,7 +97,7 @@
         <maven.compiler.version>3.8.0</maven.compiler.version>
         <maven.release.plugin.version>2.5.3</maven.release.plugin.version>
         <maven.failsafe.plugin.version>2.22.0</maven.failsafe.plugin.version>
-        <maven-surefire-plugin.version>2.22.2</maven-surefire-plugin.version>
+        <maven-surefire-plugin.version>2.18.1</maven-surefire-plugin.version>
         <sonar-maven-plugin.version>5.1.0.4751</sonar-maven-plugin.version>
         <jacoco-maven-plugin.version>0.8.10</jacoco-maven-plugin.version>
         <maven-war-plugin.version>3.4.0</maven-war-plugin.version>
@@ -322,18 +322,52 @@
     <build>
         <pluginManagement>
             <plugins>
-                <plugin>
-                    <groupId>org.sonarsource.scanner.maven</groupId>
-                    <artifactId>sonar-maven-plugin</artifactId>
-                    <version>${sonar-maven-plugin.version}</version>
-                </plugin>
-                <plugin>
+            	<plugin>
                     <artifactId>maven-compiler-plugin</artifactId>
                     <version>${maven-compiler-plugin.version}</version>
                     <configuration>
                         <source>${java.compiler.version}</source>
                         <target>${java.compiler.version}</target>
                         <encoding>UTF-8</encoding>
+                    </configuration>
+                </plugin>
+                <plugin>
+                    <groupId>org.sonarsource.scanner.maven</groupId>
+                    <artifactId>sonar-maven-plugin</artifactId>
+                    <version>${sonar-maven-plugin.version}</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-surefire-plugin</artifactId>
+                    <version>${maven-surefire-plugin.version}</version>
+                    <configuration>
+                        <forkCount>3</forkCount>
+                        <reuseForks>true</reuseForks>
+                        <forkMode>pertest</forkMode>
+                        <argLine>${surefireArgLine}</argLine>
+                        <childDelegation>true</childDelegation>
+                        <skipTests>false</skipTests>
+                        <runOrder>alphabetical</runOrder>
+                        <includes>
+                            <include>**/*TestSuite.java</include>
+                            <include>**/*DeviceMessageServiceTest.class</include>
+                        </includes>
+                    </configuration>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-clean-plugin</artifactId>
+                    <version>${maven-clean-plugin.version}</version>
+                    <configuration>
+                        <filesets>
+                            <fileset>
+                                <directory>${basedir}</directory>
+                                <includes>
+                                    <include>**/jar/</include>
+                                </includes>
+                                <followSymlinks>false</followSymlinks>
+                            </fileset>
+                        </filesets>
                     </configuration>
                 </plugin>
                 <plugin>
@@ -418,6 +452,57 @@
                             <goals>
                                 <goal>license-check</goal>
                             </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+                <plugin>
+                    <groupId>org.jacoco</groupId>
+                    <artifactId>jacoco-maven-plugin</artifactId>
+                    <version>${jacoco-maven-plugin.version}</version>
+                    <configuration>
+                        <excludes>
+                            <exclude>org/eclipse/ecsp/analytics/aws/**/*</exclude>
+                            <exclude>org/eclipse/ecsp/stream/kcl/**/*</exclude>
+                            <exclude>org/eclipse/ecsp/devicemessage/exception/*</exclude>
+                            <exclude>org/eclipse/ecsp/devicemessage/controller/DeviceMessageControllerAdvice.java
+                            </exclude>
+                            <exclude>org/eclipse/ecsp/devicemessage/*</exclude>
+                        </excludes>
+                    </configuration>
+                    <executions>
+                        <!-- Prepares the property pointing to the JaCoCo runtime agent which
+                            is passed as VM argument when Maven the Surefire plugin is executed. -->
+                        <execution>
+                            <id>pre-unit-test</id>
+                            <goals>
+                                <goal>prepare-agent</goal>
+                            </goals>
+                            <configuration>
+                                <!-- Sets the path to the file which contains the execution data. -->
+                                <destFile>${jacoco.ut.execution.data.file}</destFile>
+                                <!-- Sets the name of the property containing the settings for JaCoCo
+                                    runtime agent. -->
+                                <propertyName>surefireArgLine</propertyName>
+                                <excludes>
+                                    <exclude>**/*Constant*</exclude>
+                                    <exclude>**/*EventData*</exclude>
+                                </excludes>
+                            </configuration>
+                        </execution>
+                        <!-- Ensures that the code coverage report for unit tests is created
+                            after unit tests have been run. -->
+                        <execution>
+                            <id>post-unit-test</id>
+                            <phase>test</phase>
+                            <goals>
+                                <goal>report</goal>
+                            </goals>
+                            <configuration>
+                                <!-- Sets the path to the file which contains the execution data. -->
+                                <dataFile>${jacoco.ut.execution.data.file}</dataFile>
+                                <!-- Sets the output directory for the code coverage report. -->
+                                <outputDirectory>${project.reporting.outputDirectory}/jacoco-ut</outputDirectory>
+                            </configuration>
                         </execution>
                     </executions>
                 </plugin>

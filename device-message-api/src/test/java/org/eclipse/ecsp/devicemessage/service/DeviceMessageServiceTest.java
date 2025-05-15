@@ -47,6 +47,7 @@ public class DeviceMessageServiceTest {
 
     @After
     public void tearDown() throws Exception {
+        // do nothing
     }
 
     @Test

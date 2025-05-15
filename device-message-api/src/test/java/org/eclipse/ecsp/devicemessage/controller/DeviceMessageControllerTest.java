@@ -135,7 +135,7 @@ public class DeviceMessageControllerTest extends CommonTestBase {
             .thenReturn(getDeviceAssociationList());
     }
 
-    /*@Test
+    @Test
     public void testDeviceMessageThroughOauth() {
         String deviceId = "HADEFO67845OU";
         HttpHeaders httpHeaders = this.createHeaderForOuth();
@@ -153,7 +153,7 @@ public class DeviceMessageControllerTest extends CommonTestBase {
             assertTrue(false);
         }
 
-    }*/
+    }
 
     @Test(expected = HttpClientErrorException.class)
     public void testDeviceMessageInvalidDeviceId() throws IOException {
@@ -167,7 +167,7 @@ public class DeviceMessageControllerTest extends CommonTestBase {
 
     }
 
-    /*@Test
+    @Test
     public void testDeviceMessageForDelete() throws IOException {
         String deviceId = "HADEFO678459";
         HttpHeaders httpHeaders = this.createHeaderForOuth();
@@ -178,7 +178,7 @@ public class DeviceMessageControllerTest extends CommonTestBase {
             HttpMethod.POST, new HttpEntity<Object>(requestJson, httpHeaders), ExceptionResponse.class);
         assertEquals(HttpStatus.OK, response.getStatusCode());
 
-    }*/
+    }
 
     @Test(expected = HttpClientErrorException.class)
     public void testDeviceMessageInvalidVersion() throws IOException {

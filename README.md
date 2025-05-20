@@ -41,6 +41,7 @@ from the command line interface.
 The list of tools required to build and run the project:
    - Java 17
    - Maven
+   - Container environment
 
 ### Installation
 
@@ -48,9 +49,11 @@ The list of tools required to build and run the project:
 
 [How to set up Maven](https://maven.apache.org/install.html)
 
+Install [Docker Desktop](https://www.docker.com/products/docker-desktop/) / [Podman](https://podman.io/)
+
 ### Coding style check configuration
 
-[checkstyle.xml](./device-factory-management-api/checkstyle.xml) is the coding standard to follow while writing new/updating existing
+[checkstyle.xml](./checkstyle.xml) is the coding standard to follow while writing new/updating existing
 code.
 
 Checkstyle plugin [maven-checkstyle-plugin:3.2.1](https://maven.apache.org/plugins/maven-checkstyle-plugin/) is

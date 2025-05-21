@@ -45,11 +45,11 @@ The list of tools required to build and run the project:
 
 ### Installation
 
-[Install Java 17](https://www.azul.com/downloads/?version=java-17-lts&package=jdk#zulu)
+- [Install Java 17](https://www.azul.com/downloads/?version=java-17-lts&package=jdk#zulu)
 
-[How to set up Maven](https://maven.apache.org/install.html)
+- [How to set up Maven](https://maven.apache.org/install.html)
 
-Install [Docker Desktop](https://www.docker.com/products/docker-desktop/) / [Podman](https://podman.io/)
+- Install Docker on your machine by referring to official Docker documnentation to have a Container environment.
 
 ### Coding style check configuration
 
@@ -93,7 +93,11 @@ Sequence diagram of Device Message:
 
 ## Usage
 
-Device Message component is responsible for interfacing all communication with the device. Inbound messages are routed via Device Messaging before services process the messages. Outgoing messages from services to devices are also routed via Device Messaging. Under the hood it does a lot more keeping track of device connection status with hivemq, persisting events in database if vehicle is inactive, waking up a device if its inactive , retrying events if device has not received it etc.
+1. Device Message component is responsible for sending the configuration to the device whenever there is an update in the configuration.
+2. Internal service calls the Device Message API to initiate sending the configuration.
+3. The Device Message component sends the configuration to the device using an MQTT channel.
+4. The configuration is saved in the Device Shadow collection database.
+5. The device client can later retrieve the latest configuration by calling the Device Shadow API also.
 
 ## Built With Dependencies
 

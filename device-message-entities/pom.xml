@@ -42,7 +42,7 @@
     <parent>
         <groupId>org.eclipse.ecsp</groupId>
         <artifactId>device-message</artifactId>
-        <version>0.1.0</version>
+        <version>1.0.0</version>
     </parent>
     <artifactId>device-message-entities</artifactId>
     <dependencies>

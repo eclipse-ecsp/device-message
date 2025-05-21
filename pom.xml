@@ -41,7 +41,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.eclipse.ecsp</groupId>
     <artifactId>device-message</artifactId>
-    <version>0.1.0</version>
+    <version>1.0.0</version>
     <packaging>pom</packaging>
     <modules>
         <module>device-message-api</module>

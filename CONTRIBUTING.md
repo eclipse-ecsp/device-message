@@ -6,9 +6,9 @@ contributors to follow to keep the project consistent, as well as allow us to ke
 maintaining `eclipse-ecsp/device-message` in a reasonable amount of time.
 
 ECSP project welcomes contributions and suggestions. Please follow the below steps to be able to contribute to ECSP,
-- Create an [Eclipse Foundation account](https://accounts.eclipse.org/)
-- Review and Agree to [Eclipse Contributor Agreement](https://www.eclipse.org/legal/eca/)
-- More details about contribution can be found in [Eclipse Project Handbook - Contributors](https://www.eclipse.org/projects/handbook/#contributing-contributors) section
+- Create an [Eclipse Foundation account](https://accounts.eclipse.org/).
+- Review and Agree to [Eclipse Contributor Agreement](https://www.eclipse.org/legal/eca/).
+- More details about contribution can be found in [Eclipse Project Handbook - Contributors](https://www.eclipse.org/projects/handbook/#contributing-contributors) section.
 
 Please note that this project is released with a [Contributor Code of Conduct][coc].
 

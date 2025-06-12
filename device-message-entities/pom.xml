@@ -42,9 +42,14 @@
     <parent>
         <groupId>org.eclipse.ecsp</groupId>
         <artifactId>device-message</artifactId>
-        <version>1.0.0</version>
+        <version>1.0.1</version>
     </parent>
     <artifactId>device-message-entities</artifactId>
+
+    <name>device-message-entities</name>
+    <description>Device message library for ECSP project</description>
+    <url>https://github.com/eclipse-ecsp/device-message</url>
+
     <dependencies>
         <dependency>
             <groupId>org.eclipse.ecsp</groupId>

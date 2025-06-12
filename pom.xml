@@ -41,7 +41,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.eclipse.ecsp</groupId>
     <artifactId>device-message</artifactId>
-    <version>1.0.0</version>
+    <version>1.0.1</version>
     <packaging>pom</packaging>
     <modules>
         <module>device-message-api</module>
@@ -137,7 +137,7 @@
         <utils.version>1.1.1</utils.version>
         <spring.boot.version>3.4.4</spring.boot.version>
         <api.common.version>1.0.1</api.common.version>
-        <tomcat.version>10.1.40</tomcat.version>
+        <tomcat.version>10.1.42</tomcat.version>
         <netty.version>4.1.119.Final</netty.version>
         <logback.version>1.5.13</logback.version>
         <commons-lang3.version>3.14.0</commons-lang3.version>
@@ -161,18 +161,8 @@
         <jakarta.servlet-api.version>6.1.0</jakarta.servlet-api.version>
         <junit.jupiter.version>5.6.2</junit.jupiter.version>
         <transformers.version>1.0.0</transformers.version>
+        <central-publishing-maven-plugin.version>0.7.0</central-publishing-maven-plugin.version>
     </properties>
-
-    <distributionManagement>
-        <snapshotRepository>
-            <id>ossrh</id>
-            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
-        </snapshotRepository>
-        <repository>
-            <id>ossrh</id>
-            <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
-        </repository>
-    </distributionManagement>
 
     <pluginRepositories>
         <pluginRepository>
@@ -552,27 +542,19 @@
             <properties>
                 <maven.test.skip>true</maven.test.skip>
             </properties>
-            <distributionManagement>
-                <snapshotRepository>
-                    <id>ossrh</id>
-                    <url>https://oss.sonatype.org/content/repositories/snapshots</url>
-                </snapshotRepository>
-                <repository>
-                    <id>ossrh</id>
-                    <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
-                </repository>
-            </distributionManagement>
             <build>
                 <plugins>
                     <plugin>
-                        <groupId>org.sonatype.plugins</groupId>
-                        <artifactId>nexus-staging-maven-plugin</artifactId>
-                        <version>1.6.13</version>
+                        <groupId>org.sonatype.central</groupId>
+                        <artifactId>central-publishing-maven-plugin</artifactId>
+                        <version>${central-publishing-maven-plugin.version}</version>
                         <extensions>true</extensions>
                         <configuration>
-                            <serverId>ossrh</serverId>
-                            <nexusUrl>https://oss.sonatype.org/</nexusUrl>
-                            <autoReleaseAfterClose>true</autoReleaseAfterClose>
+                            <publishingServerId>central</publishingServerId>
+                            <autoPublish>true</autoPublish>
+                            <waitUntil>published</waitUntil>
+                            <centralSnapshotsUrl>https://central.sonatype.com/repository/maven-snapshots/</centralSnapshotsUrl>
+                        <skipPublishing>false</skipPublishing>
                         </configuration>
                     </plugin>
                     <plugin>
@@ -622,16 +604,6 @@
             <properties>
                 <maven.test.skip>true</maven.test.skip>
             </properties>
-            <distributionManagement>
-                <snapshotRepository>
-                    <id>ossrh</id>
-                    <url>https://oss.sonatype.org/content/repositories/snapshots</url>
-                </snapshotRepository>
-                <repository>
-                    <id>ossrh</id>
-                    <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
-                </repository>
-            </distributionManagement>
             <build>
                 <plugins>
                     <plugin>
